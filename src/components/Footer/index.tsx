@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as style from './style.css';
 import * as classNames from 'classnames';
 import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, FILTER_TYPES } from '../../constants/filters';
 
@@ -30,7 +29,7 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
     const itemWord = activeCount === 1 ? 'item' : 'items';
 
     return (
-      <span className={style.count}>
+      <span>
         <strong>{activeCount || 'No'}</strong> {itemWord} left
       </span>
     );
@@ -40,7 +39,7 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
     const { filter: selectedFilter, onShow } = this.props;
 
     return (
-      <a className={classNames({ [style.selected]: filter === selectedFilter })}
+      <a
         style={{ cursor: 'pointer' }}
         onClick={() => onShow(filter)}>
         {FILTER_TITLES[filter]}
@@ -52,7 +51,7 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
     const { completedCount, onClearCompleted } = this.props;
     if (completedCount > 0) {
       return (
-        <button className={style.clearCompleted} onClick={onClearCompleted} >
+        <button onClick={onClearCompleted} >
           Clear completed
         </button>
       );
@@ -61,9 +60,9 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
 
   render() {
     return (
-      <footer className={style.normal}>
+      <footer>
         {this.renderTodoCount()}
-        <ul className={style.filters}>
+        <ul>
           {FILTER_TYPES.map((filter) =>
             <li key={filter}>
               {this.renderFilterLink(filter)}

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as TodoActions from '../../actions/todos';
-import * as style from './style.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -24,7 +23,8 @@ export class App extends React.Component<App.Props, App.State> {
   render() {
     const { todos, actions, children } = this.props;
     return (
-      <div className={style.normal}>
+      <div>
+        <span>My app started</span>
         <Header addTodo={actions.addTodo} />
         <MainSection todos={todos} actions={actions} />
         {children}

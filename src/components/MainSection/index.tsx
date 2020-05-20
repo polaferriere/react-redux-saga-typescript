@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as TodoActions from '../../actions/todos';
-import * as style from './style.css';
 import { connect } from 'react-redux';
 import { Footer } from '../Footer';
 import { TodoItem } from '../TodoItem';
@@ -48,7 +47,6 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     if (todos.length > 0) {
       return (
         <input
-          className={style.toggleAll}
           type="checkbox"
           checked={completedCount === todos.length}
           onChange={actions.completeAll} />
@@ -82,9 +80,9 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     }, 0);
 
     return (
-      <section className={style.main}>
+      <section>
         {this.renderToggleAll(completedCount)}
-        <ul className={style.normal}>
+        <ul>
           {filteredTodos.map(todo =>
             <TodoItem
               key={todo.id}

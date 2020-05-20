@@ -1,4 +1,5 @@
 import 'react-redux';
+//import {Component} from 'react';
 
 declare module 'react-redux' {
   // Add removed inferrable type to support connect as decorator

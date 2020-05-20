@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import * as style from './style.css';
 import { TodoTextInput } from '../TodoTextInput';
 import { applyMiddleware } from 'redux';
 
@@ -53,8 +52,8 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
       );
     } else {
       element = (
-        <div className={style.view}>
-          <input className={style.toggle}
+        <div>
+          <input
             type="checkbox"
             checked={todo.completed}
             onChange={() => completeTodo(todo.id)} />
@@ -63,20 +62,13 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
             {todo.text}
           </label>
 
-          <button className={style.destroy} onClick={() => deleteTodo(todo.id)} />
+          <button onClick={() => deleteTodo(todo.id)} />
         </div>
       );
     }
 
-    // TODO: compose
-    const classes = classNames({
-      [style.completed]: todo.completed,
-      [style.editing]: this.state.editing,
-      [style.normal]: !this.state.editing
-    });
-
     return (
-      <li className={classes}>
+      <li>
         {element}
       </li>
     );
