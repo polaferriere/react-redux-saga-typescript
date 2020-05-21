@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
 import { Header, MainSection } from '../../components';
+import { Container, Row, Col } from "react-bootstrap";
 
 export namespace App {
   export interface Props extends RouteComponentProps<void> {
@@ -17,18 +18,22 @@ export namespace App {
   }
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
+// https://stackoverflow.com/questions/46861839/typescript-connect-react-redux-decorator-with-stateful-component/46934139
+@(connect(mapStateToProps, mapDispatchToProps) as any)
 export class App extends React.Component<App.Props, App.State> {
 
   render() {
     const { todos, actions, children } = this.props;
     return (
-      <div>
-        <span>My app started</span>
-        <Header addTodo={actions.addTodo} />
-        <MainSection todos={todos} actions={actions} />
-        {children}
-      </div>
+      <Container fluid>
+        <Row className="mt-5 justify-content-md-center" >
+          <Col className="col-md-4">
+          <Header addTodo={actions.addTodo} />
+          <MainSection todos={todos} actions={actions} />
+          {children}
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

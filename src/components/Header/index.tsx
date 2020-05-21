@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TodoTextInput } from '../TodoTextInput';
+import { Form } from "react-bootstrap";
 
 export namespace Header {
   export interface Props {
@@ -26,13 +27,13 @@ export class Header extends React.Component<Header.Props, Header.State> {
 
   render() {
     return (
-      <header>
+      <div>
         <h1>Todos</h1>
         <TodoTextInput
           newTodo
           onSave={this.handleSave}
           placeholder="What needs to be done?" />
-      </header>
+      </div>
     );
   }
 }

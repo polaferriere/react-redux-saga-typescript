@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, FILTER_TYPES } from '../../constants/filters';
+import { Row, Nav, ListGroup } from "react-bootstrap";
 
 export const FILTER_TITLES = {
   [SHOW_ALL]: 'All',
@@ -39,11 +40,11 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
     const { filter: selectedFilter, onShow } = this.props;
 
     return (
-      <a
+      <Nav.Link
         style={{ cursor: 'pointer' }}
         onClick={() => onShow(filter)}>
         {FILTER_TITLES[filter]}
-      </a>
+      </Nav.Link>
     );
   }
 
@@ -60,17 +61,17 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
 
   render() {
     return (
-      <footer>
+      <Row>
         {this.renderTodoCount()}
-        <ul>
+        <ListGroup horizontal>
           {FILTER_TYPES.map((filter) =>
-            <li key={filter}>
+            <ListGroup.Item key={filter}>
               {this.renderFilterLink(filter)}
-            </li>
+            </ListGroup.Item>
           )}
-        </ul>
+        </ListGroup>
         {this.renderClearButton()}
-      </footer>
+      </Row>
     );
   }
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Footer } from '../Footer';
 import { TodoItem } from '../TodoItem';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../constants/filters';
+import { Form } from "react-bootstrap";
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -48,6 +49,8 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
       return (
         <input
           type="checkbox"
+          title="Select/Deselect all"
+          className="mt-5 mb-5"
           checked={completedCount === todos.length}
           onChange={actions.completeAll} />
       );

@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import { TodoTextInput } from '../TodoTextInput';
 import { applyMiddleware } from 'redux';
+import { Form, Col, Button } from "react-bootstrap";
 
 export namespace TodoItem {
   export interface Props {
@@ -52,18 +53,25 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
       );
     } else {
       element = (
-        <div>
-          <input
-            type="checkbox"
-            checked={todo.completed}
-            onChange={() => completeTodo(todo.id)} />
+        <Form.Row>
+          <Col md="1">
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              title="Complete todo"
+              onChange={() => completeTodo(todo.id)} />
+          </Col>
 
-          <label onDoubleClick={this.handleDoubleClick}>
-            {todo.text}
-          </label>
+          <Col>
+            <Form.Label onDoubleClick={this.handleDoubleClick} title="Double click to edit">
+              {todo.text}
+            </Form.Label>
+          </Col>
 
-          <button onClick={() => deleteTodo(todo.id)} />
-        </div>
+          <Col md="1">
+            <Button size="sm" className="btn btn-secondary" onClick={() => deleteTodo(todo.id)} title="Delete todo">Delete</Button>
+          </Col>
+        </Form.Row>
       );
     }
 

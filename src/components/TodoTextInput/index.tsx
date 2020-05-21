@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import { Form } from "react-bootstrap";
 
 export namespace TodoTextInput {
   export interface Props {
@@ -50,7 +51,7 @@ export class TodoTextInput extends React.Component<TodoTextInput.Props, TodoText
 
   render() {
     return (
-      <input
+      <Form.Control
         type="text"
         autoFocus
         placeholder={this.props.placeholder}

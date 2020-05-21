@@ -8,6 +8,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "declaration": false,
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "noImplicitReturns": false,
     "removeComments": true,
