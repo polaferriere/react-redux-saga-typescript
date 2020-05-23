@@ -3,7 +3,7 @@ import * as TodoActions from '../actions/todos';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-import { RootState } from '../reducers';
+import { RootState } from '../../../store';
 import MainSection from '../components/MainSection';
 import Header from '../components/Header';
 import { Container, Row, Col } from "react-bootstrap";

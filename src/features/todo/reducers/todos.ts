@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import * as Actions from '../constants/actions';
+import { addTodo,editTodo, deleteTodo, completeTodo, completeAll, clearCompleted } from '../actions/todos';
 
 const initialState: TodoStoreState = [{
   id: 0,
@@ -8,7 +8,7 @@ const initialState: TodoStoreState = [{
 }];
 
 export default handleActions<TodoStoreState, TodoItemData>({
-  [Actions.ADD_TODO]: (state, action) => {
+  [addTodo.type]: (state, action) => {
     return [{
       id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
       completed: false,
@@ -16,11 +16,11 @@ export default handleActions<TodoStoreState, TodoItemData>({
     }, ...state];
   },
 
-  [Actions.DELETE_TODO]: (state, action) => {
+  [deleteTodo.type]: (state, action) => {
     return state.filter(todo => todo.id !== action.payload);
   },
 
-  [Actions.EDIT_TODO]: (state, action) => {
+  [editTodo.type]: (state, action) => {
     return state.map(todo => {
       return todo.id === action.payload.id
         ? { ...todo, text: action.payload.text }
@@ -28,7 +28,7 @@ export default handleActions<TodoStoreState, TodoItemData>({
     });
   },
 
-  [Actions.COMPLETE_TODO]: (state, action) => {
+  [completeTodo.type]: (state, action) => {
     return state.map(todo => {
       return todo.id === action.payload
         ? { ...todo, completed: !todo.completed }
@@ -36,7 +36,7 @@ export default handleActions<TodoStoreState, TodoItemData>({
     });
   },
 
-  [Actions.COMPLETE_ALL]: (state, action) => {
+  [completeAll.type]: (state, action) => {
     const areAllMarked = state.every(todo => todo.completed);
     return state.map(todo => {
       return {
@@ -46,7 +46,7 @@ export default handleActions<TodoStoreState, TodoItemData>({
     });
   },
 
-  [Actions.CLEAR_COMPLETED]: (state, action) => {
+  [clearCompleted.type]: (state, action) => {
     return state.filter(todo => todo.completed === false);
   }
 }, initialState);

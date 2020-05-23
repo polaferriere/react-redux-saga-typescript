@@ -4,12 +4,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { App }  from './features/todo/App';
-import rootReducer from '../src/features/todo/reducers';
-import { configureStore } from '@reduxjs/toolkit';
-
-const store = configureStore({
-  reducer:rootReducer
-});
+import { store } from './store'; 
 
 const history = createBrowserHistory();
 
