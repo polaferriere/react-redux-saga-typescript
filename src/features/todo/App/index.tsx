@@ -19,12 +19,15 @@ export namespace App {
   }
 }
 
-// https://stackoverflow.com/questions/46861839/typescript-connect-react-redux-decorator-with-stateful-component/46934139
-@(connect(mapStateToProps, mapDispatchToProps) as any)
-export class App extends React.Component<App.Props, App.State> {
+class App extends React.Component<App.Props, App.State> {
+
+  constructor(props, state) {
+    super(props, state)
+  }
 
   render() {
     const { todos, actions, children } = this.props;
+    console.log('>>> '+JSON.stringify(this.props));
     return (
       <Container fluid>
         <Row className="mt-5 justify-content-md-center" >
@@ -50,3 +53,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(TodoActions as any, dispatch)
   };
 }
+
+export default (connect(  mapStateToProps,  mapDispatchToProps) as any) (App)
