@@ -7,6 +7,7 @@ Forked from polaferriere/react-redux-saga-typescript
 - upgraded to the latest packages versions
 - bootstrap used for rendering todos
 - tsx classes replaced with functions and hooks
+- introduced scalable layout
 
 ## How to run
 

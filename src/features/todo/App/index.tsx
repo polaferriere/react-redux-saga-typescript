@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as TodoActions from '../../actions/todos';
+import * as TodoActions from '../actions/todos';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-import { RootState } from '../../reducers';
-import MainSection from '../../components/MainSection';
-import Header from '../../components/Header';
+import { RootState } from '../reducers';
+import MainSection from '../components/MainSection';
+import Header from '../components/Header';
 import { Container, Row, Col } from "react-bootstrap";
 
 export namespace App {
