@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
-import { Header, MainSection } from '../../components';
+import MainSection from '../../components/MainSection';
+import Header from '../../components/Header';
 import { Container, Row, Col } from "react-bootstrap";
 
 export namespace App {

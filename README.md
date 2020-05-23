@@ -2,11 +2,15 @@
 
 Forked from polaferriere/react-redux-saga-typescript
 
-## Goals
+## Changes in this version
 
-- use bootstrap.css for rendering todos
-- restrict access to todos for logged users only
+- upgraded to the latest packages versions
+- bootstrap used for rendering todos
+- tsx classes replaced with functions and hooks
 
-username: guest
-password: secret
+## How to run
+
+- npm install
+- npm start
+
 

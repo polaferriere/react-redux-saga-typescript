@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as TodoActions from '../../actions/todos';
+import * as TodoActions from '../actions/todos';
 import { connect } from 'react-redux';
-import { Footer } from '../Footer';
-import { TodoItem } from '../TodoItem';
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../constants/filters';
+import FooterComponent from './Footer';
+import TodoTextInput from './TodoItem';
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/filters';
 import { Form } from "react-bootstrap";
 
 const TODO_FILTERS = {
@@ -23,7 +23,7 @@ export namespace MainSection {
   }
 }
 
-export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
+export default class MainSection extends React.Component<MainSection.Props, MainSection.State> {
 
   constructor(props?: MainSection.Props, context?: any) {
     super(props, context);
@@ -64,7 +64,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
 
     if (todos.length) {
       return (
-        <Footer filter={filter}
+        <FooterComponent filter={filter}
           activeCount={activeCount}
           completedCount={completedCount}
           onClearCompleted={this.handleClearCompleted}
@@ -87,7 +87,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
         {this.renderToggleAll(completedCount)}
         <ul>
           {filteredTodos.map(todo =>
-            <TodoItem
+            <TodoTextInput
               key={todo.id}
               todo={todo}
               completeTodo={actions.completeTodo}
