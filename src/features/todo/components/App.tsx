@@ -5,9 +5,7 @@ import { RootState } from '../../../store';
 import MainSection from './MainSection';
 import Header from './Header';
 import { Container, Row, Col } from "react-bootstrap";
-import { addTodo, deleteTodo, editTodo, completeTodo, completeAll, clearCompleted } from '../todoSlice';
-
-const TodoActions = { addTodo, deleteTodo, editTodo, completeTodo, completeAll, clearCompleted };
+import * as TodoActions from '../todoSlice';
 
 export function App(props) {
 

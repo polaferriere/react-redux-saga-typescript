@@ -1,10 +1,8 @@
 import * as React from 'react';
-import {addTodo, deleteTodo, editTodo, completeTodo, completeAll, clearCompleted } from '../todoSlice';
+import * as TodoActions from '../todoSlice';
 import FooterComponent from './Footer';
 import TodoTextInput from './TodoItem';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/filters';
-
-const TodoActions = {addTodo, deleteTodo, editTodo, completeTodo, completeAll, clearCompleted };
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,

@@ -5,7 +5,6 @@ const todosSlice = createSlice({
   initialState: [],
   reducers: {
     addTodo(state, action) {
-      console.log("OOOOOOOO add!!!")
       return [{
         id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
         completed: false,

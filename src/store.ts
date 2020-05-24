@@ -14,5 +14,5 @@ const store = configureStore({
     reducer:rootReducer
 });
 
-export {store, combineReducers}
+export default store
 
