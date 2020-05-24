@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import FooterComponent from './Footer';
 import TodoTextInput from './TodoItem';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/filters';
@@ -12,6 +12,7 @@ const TODO_FILTERS = {
 export default function MainSection(props) {
 
   const [filter, setFilter] = useState(SHOW_ALL);
+  const { todos, actions } = props;
 
   function handleClearCompleted() {
     const atLeastOneCompleted = props.todos.some(todo => todo.completed);
@@ -24,8 +25,11 @@ export default function MainSection(props) {
     setFilter(filter);
   }
 
+  function handlerCompleteAll(e) {
+    actions.completeAll("");
+  }
+
   function renderToggleAll(completedCount: number) {
-    const { todos, actions } = props;
     if (todos.length > 0) {
       return (
         <input
@@ -33,13 +37,12 @@ export default function MainSection(props) {
           title="Select/Deselect all"
           className="mt-5 mb-5"
           checked={completedCount === todos.length}
-          onChange={actions.completeAll} />
+          onChange={handlerCompleteAll} />
       );
     }
   }
 
   function renderFooter(completedCount: number) {
-    const { todos } = props;
     const activeCount = todos.length - completedCount;
 
     if (todos.length) {
@@ -54,8 +57,6 @@ export default function MainSection(props) {
   }
 
   function render() {
-    const { todos, actions } = props;
-
     const filteredTodos = todos.filter(TODO_FILTERS[filter]);
     const completedCount = todos.reduce((count, todo) => {
       return todo.completed ? count + 1 : count;
@@ -80,5 +81,5 @@ export default function MainSection(props) {
   }
 
   return render();
-  
+
 }
