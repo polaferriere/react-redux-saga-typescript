@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as TodoActions from '../actions/todos';
-import { connect } from 'react-redux';
+import {addTodo, deleteTodo, editTodo, completeTodo, completeAll, clearCompleted } from '../todoSlice';
 import FooterComponent from './Footer';
 import TodoTextInput from './TodoItem';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/filters';
-import { Form } from "react-bootstrap";
+
+const TodoActions = {addTodo, deleteTodo, editTodo, completeTodo, completeAll, clearCompleted };
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -35,7 +35,7 @@ export default class MainSection extends React.Component<MainSection.Props, Main
   handleClearCompleted() {
     const atLeastOneCompleted = this.props.todos.some(todo => todo.completed);
     if (atLeastOneCompleted) {
-      this.props.actions.clearCompleted();
+      this.props.actions.clearCompleted;
     }
   }
 

@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers, Reducer } from 'redux';
-import todos from './features/todo/reducers/todos';
+import todoReducer from './features/todo/todoSlice';
 
 export interface RootState {
   todos: TodoStoreState;
 }
 
 const rootReducer = combineReducers<RootState>({
-  todos
+  todos:todoReducer
 })
 
 const store = configureStore({
