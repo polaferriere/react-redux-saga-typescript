@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import FooterComponent from './Footer';
 import TodoItem from './TodoItem';
 import { VisibilityFilters } from '../filterSlice';

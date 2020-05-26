@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { combineReducers, applyMiddleware } from 'redux';
+import { combineReducers } from 'redux';
 import todoReducer from './features/todo/todoSlice';
 import visibilityFilterReducer from './features/todo/filterSlice';
 import helloSaga from './features/todo/sagas';
