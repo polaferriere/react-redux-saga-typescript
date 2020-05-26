@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import FooterComponent from './Footer';
-import TodoTextInput from './TodoItem';
+import TodoItem from './TodoItem';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/filters';
+import {clearCompleted, completeAll } from '../todoSlice';
+import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -9,15 +12,17 @@ const TODO_FILTERS = {
   [SHOW_COMPLETED]: todo => todo.completed
 };
 
-export default function MainSection(props) {
+const mapDispatch = {clearCompleted, completeAll };
+
+const MainSection = ({clearCompleted, completeAll }) => {
 
   const [filter, setFilter] = useState(SHOW_ALL);
-  const { todos, actions } = props;
+  const todos = useSelector(state => state["todos"]);
 
   function handleClearCompleted() {
-    const atLeastOneCompleted = props.todos.some(todo => todo.completed);
+    const atLeastOneCompleted = todos.some(todo => todo.completed);
     if (atLeastOneCompleted) {
-      props.actions.clearCompleted;
+      clearCompleted('');
     }
   }
 
@@ -26,7 +31,7 @@ export default function MainSection(props) {
   }
 
   function handlerCompleteAll(e) {
-    actions.completeAll("");
+    completeAll('');
   }
 
   function renderToggleAll(completedCount: number) {
@@ -67,12 +72,7 @@ export default function MainSection(props) {
         {renderToggleAll(completedCount)}
         <ul>
           {filteredTodos.map(todo =>
-            <TodoTextInput
-              key={todo.id}
-              todo={todo}
-              completeTodo={actions.completeTodo}
-              deleteTodo={actions.deleteTodo}
-              editTodo={actions.editTodo} />
+            <TodoItem key={todo.id} todo={todo} />
           )}
         </ul>
         {renderFooter(completedCount)}
@@ -83,3 +83,5 @@ export default function MainSection(props) {
   return render();
 
 }
+
+export default connect(null, mapDispatch)(MainSection)

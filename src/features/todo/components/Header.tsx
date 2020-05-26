@@ -1,11 +1,15 @@
 import * as React from 'react';
 import TodoTextInput from './TodoTextInput';
+import {addTodo} from '../todoSlice';
+import { connect } from 'react-redux';
 
-export default function Header(props) {
+const mapDispatch = {addTodo};
+
+const Header = ({addTodo}) => {
 
     function handleSave(text: string) {
         if (text.length) {
-            props.addTodo({ text });
+            addTodo(text);
         }
     }
 
@@ -19,3 +23,5 @@ export default function Header(props) {
         </div>
     );
 }
+
+export default connect(null, mapDispatch)(Header)

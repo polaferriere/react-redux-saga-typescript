@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import TodoTextInput from './TodoTextInput';
 import { Form, Col, Button } from "react-bootstrap";
+import { deleteTodo, editTodo, completeTodo } from '../todoSlice';
+import { connect } from 'react-redux';
 
-export default function TodoItem(props) {
+const mapDispatch = { deleteTodo, editTodo, completeTodo };
+
+const TodoItem = ({ todo, deleteTodo, editTodo, completeTodo }) => {
 
     const [isEditing, setEditing] = useState(false);
-
+    
     function handleDoubleClick() {
         setEditing(true);
     }
 
     function handleSave(id: number, text: string) {
         if (text.length === 0) {
-            props.deleteTodo(id);
+            deleteTodo(id);
         } else {
-            props.editTodo({ id, text });
+            editTodo({ id, text });
         }
         setEditing(false);
     }
 
     function render() {
-        const { todo, completeTodo, deleteTodo } = props;
 
         let element;
         if (isEditing) {
@@ -63,3 +66,5 @@ export default function TodoItem(props) {
     return render();
 
 }
+
+export default connect(null, mapDispatch)(TodoItem)

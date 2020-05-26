@@ -8,7 +8,7 @@ const todosSlice = createSlice({
       return [{
         id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
         completed: false,
-        ...action.payload,
+        text: action.payload,
       }, ...state];
     },
     deleteTodo(state, action) {
