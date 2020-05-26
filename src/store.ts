@@ -1,13 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers, Reducer } from 'redux';
+import { combineReducers } from 'redux';
 import todoReducer from './features/todo/todoSlice';
+import visibilityFilterReducer from './features/todo/filterSlice';
 
 export interface RootState {
-  todos: TodoStoreState;
+  todos: TodoStoreState,
+  visibilityFilter: string
 }
 
 const rootReducer = combineReducers<RootState>({
-  todos:todoReducer
+  todos:todoReducer,
+  visibilityFilter: visibilityFilterReducer
 })
 
 const store = configureStore({

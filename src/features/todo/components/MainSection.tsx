@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import FooterComponent from './Footer';
 import TodoItem from './TodoItem';
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/filters';
+import { VisibilityFilters } from '../filterSlice';
 import {clearCompleted, completeAll } from '../todoSlice';
 import { useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 
 const TODO_FILTERS = {
-  [SHOW_ALL]: () => true,
-  [SHOW_ACTIVE]: todo => !todo.completed,
-  [SHOW_COMPLETED]: todo => todo.completed
+  [VisibilityFilters.SHOW_ALL]: () => true,
+  [VisibilityFilters.SHOW_ACTIVE]: todo => !todo.completed,
+  [VisibilityFilters.SHOW_COMPLETED]: todo => todo.completed
 };
 
 const mapDispatch = {clearCompleted, completeAll };
 
 const MainSection = ({clearCompleted, completeAll }) => {
 
-  const [filter, setFilter] = useState(SHOW_ALL);
+  const [filter, setFilter] = useState(VisibilityFilters.SHOW_ALL);
   const todos = useSelector(state => state["todos"]);
 
   function handleClearCompleted() {

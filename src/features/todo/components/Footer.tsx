@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, FILTER_TYPES } from '../constants/filters';
+import { VisibilityFilters } from '../filterSlice';
 import { Row, Nav, ListGroup } from "react-bootstrap";
 
 
 export default function FooterComponent(props) {
 
     const FILTER_TITLES = {
-        [SHOW_ALL]: 'All',
-        [SHOW_ACTIVE]: 'Active',
-        [SHOW_COMPLETED]: 'Completed'
+        [VisibilityFilters.SHOW_ALL]: 'All',
+        [VisibilityFilters.SHOW_ACTIVE]: 'Active',
+        [VisibilityFilters.SHOW_COMPLETED]: 'Completed'
     };
 
     function renderTodoCount() {
@@ -22,7 +22,7 @@ export default function FooterComponent(props) {
         );
     }
 
-    function renderFilterLink(filter: TodoFilterType) {
+    function renderFilterLink(filter: string) {
         const { filter: selectedFilter, onShow } = props;
 
         return (
@@ -49,11 +49,15 @@ export default function FooterComponent(props) {
         <Row>
             {renderTodoCount()}
             <ListGroup horizontal>
-                {FILTER_TYPES.map((filter) =>
-                    <ListGroup.Item key={filter}>
-                        {renderFilterLink(filter)}
+                    <ListGroup.Item key={VisibilityFilters.SHOW_ALL}>
+                        {renderFilterLink(VisibilityFilters.SHOW_ALL)}
                     </ListGroup.Item>
-                )}
+                    <ListGroup.Item key={VisibilityFilters.SHOW_ACTIVE}>
+                        {renderFilterLink(VisibilityFilters.SHOW_ACTIVE)}
+                    </ListGroup.Item>
+                    <ListGroup.Item key={VisibilityFilters.SHOW_COMPLETED}>
+                        {renderFilterLink(VisibilityFilters.SHOW_COMPLETED)}
+                    </ListGroup.Item>
             </ListGroup>
             {renderClearButton()}
         </Row>
