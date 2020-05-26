@@ -1,7 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { combineReducers, applyMiddleware } from 'redux';
 import todoReducer from './features/todo/todoSlice';
 import visibilityFilterReducer from './features/todo/filterSlice';
+import helloSaga from './features/todo/sagas';
+import createSagaMiddleware from 'redux-saga';
+
+const sagaMiddleware = createSagaMiddleware();
 
 export interface RootState {
   todos: TodoStoreState,
@@ -14,8 +18,11 @@ const rootReducer = combineReducers<RootState>({
 })
 
 const store = configureStore({
-    reducer:rootReducer
+    reducer:rootReducer,
+    middleware: [...getDefaultMiddleware(), sagaMiddleware]
 });
+
+sagaMiddleware.run(helloSaga);
 
 export default store
 
