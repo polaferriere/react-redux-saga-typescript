@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { VisibilityFilters } from '../filterSlice';
+import { VisibilityFilters, setVisibilityFilter } from '../filterSlice';
 import { Row, Nav, ListGroup } from "react-bootstrap";
+import { connect } from 'react-redux';
 
+const mapDispatch = {setVisibilityFilter};
 
-export default function FooterComponent(props) {
+const FooterComponent = ({setVisibilityFilter, activeCount, completedCount, onClearCompleted}) => {
 
     const FILTER_TITLES = {
         [VisibilityFilters.SHOW_ALL]: 'All',
@@ -12,9 +14,7 @@ export default function FooterComponent(props) {
     };
 
     function renderTodoCount() {
-        const { activeCount } = props;
         const itemWord = activeCount === 1 ? 'item' : 'items';
-
         return (
             <span>
                 <strong>{activeCount || 'No'}</strong> {itemWord} left
@@ -23,19 +23,16 @@ export default function FooterComponent(props) {
     }
 
     function renderFilterLink(filter: string) {
-        const { filter: selectedFilter, onShow } = props;
-
         return (
             <Nav.Link
                 style={{ cursor: 'pointer' }}
-                onClick={() => onShow(filter)}>
+                onClick={() => setVisibilityFilter(filter)}>
                 {FILTER_TITLES[filter]}
             </Nav.Link>
         );
     }
 
     function renderClearButton() {
-        const { completedCount, onClearCompleted } = props;
         if (completedCount > 0) {
             return (
                 <button onClick={onClearCompleted} >
@@ -63,4 +60,6 @@ export default function FooterComponent(props) {
         </Row>
     );
 }
+
+export default connect(null, mapDispatch)(FooterComponent)
 

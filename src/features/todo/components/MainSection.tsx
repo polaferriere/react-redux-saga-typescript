@@ -16,18 +16,15 @@ const mapDispatch = {clearCompleted, completeAll };
 
 const MainSection = ({clearCompleted, completeAll }) => {
 
-  const [filter, setFilter] = useState(VisibilityFilters.SHOW_ALL);
+  //const [filter, setFilter] = useState(VisibilityFilters.SHOW_ALL);
   const todos = useSelector(state => state["todos"]);
+  const filter = useSelector(state => state["visibilityFilter"]);
 
   function handleClearCompleted() {
     const atLeastOneCompleted = todos.some(todo => todo.completed);
     if (atLeastOneCompleted) {
       clearCompleted('');
     }
-  }
-
-  function handleShow(filter: TodoFilterType) {
-    setFilter(filter);
   }
 
   function handlerCompleteAll(e) {
@@ -52,11 +49,11 @@ const MainSection = ({clearCompleted, completeAll }) => {
 
     if (todos.length) {
       return (
-        <FooterComponent filter={filter}
+        <FooterComponent
           activeCount={activeCount}
           completedCount={completedCount}
           onClearCompleted={handleClearCompleted}
-          onShow={handleShow} />
+         />
       );
     }
   }
