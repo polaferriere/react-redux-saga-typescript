@@ -23,7 +23,7 @@ They are provided for education purpose only.
 
 Redux serves for providing global state, typically when we want to pass the state between components.
 
-Usin redux often seems cumbersom but it's easy if you know how to manage it.
+Using redux often seems cumbersom but it's easy if you know how to manage it.
 
 - first define store structure for a component, such as in todos/store.ts
 - then write a slice with reducers as in todos/slice.ts
@@ -32,7 +32,7 @@ Note that you don't need to define special constants for actions - they are expo
 
 For example, in todos/slice.ts addTodo action is exported with the type 'todos/addTodo'
 
-- the add component store and reducers to global store. as it's done in 'src/store.ts'
+- then add component store and reducers to global store. as it's done in 'src/store.ts'
 
 That is enough to have redux in the component
 
