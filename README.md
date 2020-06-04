@@ -23,7 +23,7 @@ They are provided for education purpose only.
 
 Redux serves for providing global state, typically when we want to pass the state between components.
 
-Using redux often seems cumbersom but it's easy if you know how to manage it.
+Using redux often seems cumbersome but it's easy if you know how to manage it.
 
 - first define store structure for a component, such as in todos/store.ts
 - then write a slice with reducers as in todos/slice.ts
