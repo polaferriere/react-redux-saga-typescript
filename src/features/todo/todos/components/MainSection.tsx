@@ -1,7 +1,7 @@
 import * as React from 'react';
-import FooterComponent from './Footer';
+import FooterComponent from '../../filter/components/Footer';
 import TodoItem from './TodoItem';
-import { VisibilityFilters } from '../filterSlice';
+import { VisibilityFilters } from '../../filter/filterSlice';
 import {clearCompleted, completeAll } from '../todoSlice';
 import { useSelector } from 'react-redux';
 import { connect } from 'react-redux';

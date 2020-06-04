@@ -1,14 +1,14 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import todoReducer from './features/todo/todoSlice';
-import visibilityFilterReducer from './features/todo/filterSlice';
-import helloSaga from './features/todo/sagas';
+import todoReducer from './features/todo/todos/todoSlice';
+import visibilityFilterReducer from './features/todo/filter/filterSlice';
+import helloSaga from './features/todo/todos/sagas';
 import createSagaMiddleware from 'redux-saga';
-
+import { TodoStore } from './features/todo/todos/store';
 const sagaMiddleware = createSagaMiddleware();
 
 export interface RootState {
-  todos: TodoStoreState,
+  todos: TodoStore,
   visibilityFilter: string
 }
 

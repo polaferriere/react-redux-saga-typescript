@@ -3,8 +3,6 @@ import TodoTextInput from './TodoTextInput';
 import {addTodo} from '../todoSlice';
 import { connect } from 'react-redux';
 
-const mapDispatch = {addTodo};
-
 const Header = ({addTodo}) => {
 
     function handleSave(text: string) {
@@ -24,4 +22,4 @@ const Header = ({addTodo}) => {
     );
 }
 
-export default connect(null, mapDispatch)(Header)
+export default connect(null, {addTodo})(Header)
