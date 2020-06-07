@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import TodoTextInput from './TodoTextInput';
-import { Form, Col, Button } from "react-bootstrap";
 import { deleteTodo, editTodo, completeTodo } from '../todoSlice';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const mapDispatch = { deleteTodo, editTodo, completeTodo };
 
@@ -34,25 +36,25 @@ const TodoItem = ({ todo, deleteTodo, editTodo, completeTodo }) => {
             );
         } else {
             element = (
-                <Form.Row>
-                    <Col md="1">
+                <Grid container spacing={3}>
+                    <Grid item xs={1}>
                         <input
                             type="checkbox"
                             checked={todo.completed}
                             title="Complete todo"
                             onChange={() => completeTodo(todo.id)} />
-                    </Col>
+                    </Grid>
 
-                    <Col>
-                        <Form.Label onDoubleClick={handleDoubleClick} title="Double click to edit">
+                    <Grid item xs={8}>
+                        <Typography onDoubleClick={handleDoubleClick} title="Double click to edit">
                             {todo.text}
-                        </Form.Label>
-                    </Col>
+                        </Typography>
+                    </Grid>
 
-                    <Col md="1">
-                        <Button size="sm" className="btn btn-secondary" onClick={() => deleteTodo(todo.id)} title="Delete todo">Delete</Button>
-                    </Col>
-                </Form.Row>
+                    <Grid item xs={3}>
+                        <Button onClick={() => deleteTodo(todo.id)} title="Delete todo">Delete</Button>
+                    </Grid>
+                </Grid>
             );
         }
 

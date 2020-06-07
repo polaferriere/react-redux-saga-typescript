@@ -1,17 +1,18 @@
 import * as React from 'react';
 import MainSection from './MainSection';
 import Header from './Header';
-import { Container, Row, Col } from "react-bootstrap";
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 const App = () => {
   return (
-    <Container fluid>
-      <Row className="mt-5 justify-content-md-center" >
-        <Col className="col-md-4">
+    <Container maxWidth="sm">
+      <Grid >
+        <Grid item>
           <Header />
           <MainSection />
-        </Col>
-      </Row>
+        </Grid>
+      </Grid>
     </Container>
   );
 }

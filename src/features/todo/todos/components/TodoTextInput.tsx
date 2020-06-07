@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { Form } from "react-bootstrap";
+import TextField from '@material-ui/core/TextField';
 
 export default function TodoTextInput(props) {
 
-    const [text, saveText] = useState(props.text || '');
+  // eslint-disable-next-line
+  const [text, saveText] = useState(props.text || '');
 
   function handleSubmit(e) {
     const text = e.target.value.trim();
@@ -27,14 +28,19 @@ export default function TodoTextInput(props) {
   }
 
     return (
-      <Form.Control
-        type="text"
-        autoFocus
-        placeholder={props.placeholder}
-        value={text}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onKeyDown={handleSubmit} />
+      <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="todo"
+          label={props.placeholder}
+          name="todo"
+          autoFocus
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onKeyDown={handleSubmit} />
+          
     );
 
 }

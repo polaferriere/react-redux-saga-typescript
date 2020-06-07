@@ -37,7 +37,6 @@ const MainSection = ({clearCompleted, completeAll }) => {
         <input
           type="checkbox"
           title="Select/Deselect all"
-          className="mt-5 mb-5"
           checked={completedCount === todos.length}
           onChange={handlerCompleteAll} />
       );
