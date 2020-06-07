@@ -9,6 +9,7 @@ Forked from polaferriere/react-redux-saga-typescript
 - tsx classes replaced with functions and hooks
 - introduced scalable layout
 - using @reduxjs/toolkit
+- added redux-persist saving state in the local storage
 
 ## How to run
 

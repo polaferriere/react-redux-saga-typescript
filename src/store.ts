@@ -5,7 +5,15 @@ import visibilityFilterReducer from './features/todo/filter/filterSlice';
 import helloSaga from './features/todo/todos/sagas';
 import createSagaMiddleware from 'redux-saga';
 import { TodoStore } from './features/todo/todos/store';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
 const sagaMiddleware = createSagaMiddleware();
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
 export interface RootState {
   todos: TodoStore,
@@ -17,12 +25,16 @@ const rootReducer = combineReducers<RootState>({
   visibilityFilter: visibilityFilterReducer
 })
 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 const store = configureStore({
-    reducer:rootReducer,
+    reducer:persistedReducer,
     middleware: [...getDefaultMiddleware(), sagaMiddleware]
 });
 
 sagaMiddleware.run(helloSaga);
 
-export default store
+let persistor = persistStore(store)
+
+export { store, persistor }
 
