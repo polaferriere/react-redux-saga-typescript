@@ -10,6 +10,7 @@ Forked from polaferriere/react-redux-saga-typescript
 - introduced scalable layout
 - using @reduxjs/toolkit
 - added redux-persist saving state in the local storage
+- added dashboard with left menu
 
 ## How to run
 
