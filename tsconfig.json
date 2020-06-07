@@ -3,11 +3,12 @@
     "sourceMap": true,
     "target": "es5",
     "jsx": "react",
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "declaration": false,
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "noImplicitReturns": false,
     "removeComments": true,
@@ -17,11 +18,17 @@
       "es6",
       "es7",
       "dom"
-    ]
-  },
-  "exclude": [
-    "dist",
-    "build",
-    "node_modules"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+ },
+  "include": [
+    "src"
   ]
 }

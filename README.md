@@ -1,57 +1,53 @@
 # Frontend Boilerplate with React, Redux & TypeScript
 
-A bare minimum react-redux-webpack-typescript boilerplate with TodoMVC example.
+Forked from polaferriere/react-redux-saga-typescript
 
-Note that this project does not include **Server-Side Rendering**,  **Testing Frameworks** and other stuffs that makes the package unnecessarily complicated.
+## Changes in this version
 
-Ideal for creating React apps from the scratch.
+- upgraded to the latest packages versions
+- material UI for rendering todos
+- tsx classes replaced with functions and hooks
+- introduced scalable layout
+- using @reduxjs/toolkit
+- added redux-persist saving state in the local storage
+- added dashboard with left menu
 
-See also: [react-mobx-typescript-boilerplate](https://github.com/rokoroku/react-mobx-typescript-boilerplate)
+## How to run
 
-### Branches
-- [`feature-tslint`](https://github.com/rokoroku/react-redux-typescript-boilerplate/tree/feature/tslint): yarn + tslint + prettier integrated branch.
+- npm install
+- npm start
 
-## Contains
+## Redux how to
 
-- [x] [Typescript](https://www.typescriptlang.org/) 2.5
-- [x] [React](https://facebook.github.io/react/) 16.0
-- [x] [Redux](https://github.com/reactjs/redux) 3.7
-- [x] [React Router](https://github.com/ReactTraining/react-router) 4.2
-- [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
-- [x] [TodoMVC example](http://todomvc.com)
+We don't need redux and especially redux-saga in this project.
 
-### Build tools
+They are provided for education purpose only.
 
-- [x] [Webpack](https://webpack.github.io) 3
-  - [x] [Tree Shaking](https://medium.com/@Rich_Harris/tree-shaking-versus-dead-code-elimination-d3765df85c80)
-  - [x] [Webpack Dev Server](https://github.com/webpack/webpack-dev-server)
-- [x] [Awesome Typescript Loader](https://github.com/s-panferov/awesome-typescript-loader)
-- [x] [PostCSS Loader](https://github.com/postcss/postcss-loader)
-  - [x] [CSS next](https://github.com/MoOx/postcss-cssnext)
-  - [x] [CSS modules](https://github.com/css-modules/css-modules)
-- [x] [React Hot Loader](https://github.com/gaearon/react-hot-loader)
-- [x] [ExtractText Plugin](https://github.com/webpack/extract-text-webpack-plugin)
-- [x] [HTML Webpack Plugin](https://github.com/ampedandwired/html-webpack-plugin)
+Redux serves for providing global state, typically when we want to pass the state between components.
+
+Using redux often seems cumbersome but it's easy if you know how to manage it.
+
+- first define store structure for a component, such as in todos/store.ts
+- then write a slice with reducers as in todos/slice.ts
+
+Note that you don't need to define special constants for actions - they are exported from slice
+
+For example, in todos/slice.ts addTodo action is exported with the type 'todos/addTodo'
+
+- then add component store and reducers to global store. as it's done in 'src/store.ts'
+
+That is enough to have redux in the component
+
+Now how to use it in the component?
+
+- first import the action you will use in the component, see example in 'todos/components/Header.tsx'
+- connect the component to redux (see last line in 'todos/components/Header.tsx')
+- obtain action from props, like
+  ```
+  const Header = ({addTodo}) => {...}
+  ```
+- if a component needs a store data, use 'useSelector' hook
 
 
-## Setup
 
-```
-$ npm install
-```
 
-## Running
-
-```
-$ npm start
-```
-
-## Build
-
-```
-$ npm run build
-```
-
-# License
-
-MIT
